@@ -10,8 +10,8 @@ class Robot
   def place(x_position, y_position, orientation)
     return unless valid_placement?(x_position, y_position, orientation)
 
-    @x_position = x_position
-    @y_position = y_position
+    @x_position = x_position.to_i
+    @y_position = y_position.to_i
     @orientation = orientation
   end
 
