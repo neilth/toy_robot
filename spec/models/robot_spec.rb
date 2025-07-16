@@ -1,23 +1,23 @@
 require_relative '../.././models/robot'
 
 RSpec.describe Robot do
-  let (:robot) { Robot.new(x_position, y_position, direction) }
+  let (:robot) { Robot.new(x_position, y_position, orientation) }
   let (:x_position) { 3 }
   let (:y_position) { 3 }
-  let (:direction) { 'NORTH' }
+  let (:orientation) { 'NORTH' }
   
   describe '#initialize' do
-    it 'must have an initial position and direction' do
+    it 'must have an initial position and orientation' do
       expect(robot.x_position).to eq(x_position)
       expect(robot.y_position).to eq(y_position)
-      expect(robot.direction).to eq(direction)
+      expect(robot.orientation).to eq(orientation)
     end
   end
 
   describe '#move' do
     before { robot.move }
 
-    context 'when the direction is NORTH' do
+    context 'when the orientation is NORTH' do
       it 'must increase the y position by 1' do
         expect(robot.y_position).to eq(y_position + 1)
       end
@@ -31,8 +31,8 @@ RSpec.describe Robot do
       end
     end
 
-    context 'when the direction is SOUTH' do
-      let (:direction) { 'SOUTH' }
+    context 'when the orientation is SOUTH' do
+      let (:orientation) { 'SOUTH' }
 
       it 'must decrease the y position by 1' do
         expect(robot.y_position).to eq(y_position - 1)
@@ -47,8 +47,8 @@ RSpec.describe Robot do
       end
     end
 
-    context 'when the direction is EAST' do
-      let (:direction) { 'EAST' }
+    context 'when the orientation is EAST' do
+      let (:orientation) { 'EAST' }
 
       it 'must increase the x position by 1' do
         expect(robot.x_position).to eq(x_position + 1)
@@ -63,8 +63,8 @@ RSpec.describe Robot do
       end
     end
 
-    context 'when the direction is WEST' do
-      let (:direction) { 'WEST' }
+    context 'when the orientation is WEST' do
+      let (:orientation) { 'WEST' }
 
       it 'must decrease the x position by 1' do
         expect(robot.x_position).to eq(x_position - 1)
@@ -81,31 +81,31 @@ RSpec.describe Robot do
   end
 
   describe '#rotate' do
-    context 'when the rotation orientation is RIGHT' do
+    context 'when the rotation direction is RIGHT' do
       before { robot.rotate('RIGHT') }
-      it 'changes direction to the right' do
-        expect(robot.direction).to eq('EAST')
+      it 'changes orientation to the right' do
+        expect(robot.orientation).to eq('EAST')
       end
     end
 
-    context 'when the rotation orientation is LEFT' do
+    context 'when the rotation direction is LEFT' do
       before { robot.rotate('LEFT') }
-      it 'changes direction to the left' do
-        expect(robot.direction).to eq('WEST')
+      it 'changes orientation to the left' do
+        expect(robot.orientation).to eq('WEST')
       end
     end
 
-    context 'when the rotation orientation is invalid' do
+    context 'when the rotation direction is invalid' do
       before { robot.rotate('INVALID') }
-      it 'does not change direction' do
-        expect(robot.direction).to eq(direction)
+      it 'does not change orientation' do
+        expect(robot.orientation).to eq(orientation)
       end
     end
   end
 
   describe '#report' do
-    it 'returns the current position and direction of the robot' do
-      expect(robot.report).to eq("3, 3, NORTH")
+    it 'returns the current position and orientation of the robot' do
+      expect(robot.report).to eq('3, 3, NORTH')
     end
   end
 end
