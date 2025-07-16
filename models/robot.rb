@@ -16,7 +16,7 @@ class Robot
   end
 
   def move
-    return if x_position.nil? || y_position.nil?
+    return if x_position.nil? || y_position.nil? || orientation.nil?
 
     case orientation
     when 'NORTH'
