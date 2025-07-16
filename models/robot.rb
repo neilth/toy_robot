@@ -2,8 +2,8 @@
 
 class Robot
   ORIENTATIONS = %w[NORTH EAST SOUTH WEST]
-  MAX_X_POSITION = 5
-  MAX_Y_POSITION = 5
+  MAX_X_POSITION = 4
+  MAX_Y_POSITION = 4
 
   attr_accessor :x_position, :y_position, :orientation
 
@@ -59,8 +59,8 @@ class Robot
   private
 
   def valid_placement?(x_position, y_position, orientation)
-    x_position.to_s == x_position.to_i.to_s &&
-    y_position.to_s == y_position.to_i.to_s &&
+    x_position.to_s == x_position.to_i.to_s && x_position.to_i >= 0 && x_position.to_i <= MAX_X_POSITION &&
+    y_position.to_s == y_position.to_i.to_s && y_position.to_i >= 0 && y_position.to_i <= MAX_Y_POSITION &&
     ORIENTATIONS.include?(orientation)
   end
 end
