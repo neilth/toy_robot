@@ -1,16 +1,32 @@
 require_relative '../.././models/robot'
 
 RSpec.describe Robot do
-  let (:robot) { Robot.new(x_position, y_position, orientation) }
+  let (:robot) { Robot.new }
   let (:x_position) { 3 }
   let (:y_position) { 3 }
   let (:orientation) { 'NORTH' }
   
-  describe '#initialize' do
-    it 'must have an initial position and orientation' do
+  before { robot.place(x_position, y_position, orientation) }
+
+  describe '#place' do
+    it 'must set the robot position and orientation' do
       expect(robot.x_position).to eq(x_position)
       expect(robot.y_position).to eq(y_position)
       expect(robot.orientation).to eq(orientation)
+    end
+
+    context 'when the values are invalid' do
+      let (:invalid_x_position) { 'invalid' }
+      let (:invalid_y_position) { 'invalid' }
+      let (:invalid_orientation) { 'invalid' }
+
+      it 'must not update the robot position and orientation' do
+        robot.place(invalid_x_position, invalid_y_position, invalid_orientation)
+
+        expect(robot.x_position).to eq(x_position)
+        expect(robot.y_position).to eq(y_position)
+        expect(robot.orientation).to eq(orientation)
+      end
     end
   end
 

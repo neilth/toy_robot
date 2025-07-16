@@ -7,13 +7,17 @@ class Robot
 
   attr_accessor :x_position, :y_position, :orientation
 
-  def initialize(x_position, y_position, orientation)
+  def place(x_position, y_position, orientation)
+    return unless valid_placement?(x_position, y_position, orientation)
+
     @x_position = x_position
     @y_position = y_position
     @orientation = orientation
   end
 
   def move
+    return if x_position.nil? || y_position.nil?
+
     case orientation
     when 'NORTH'
       self.y_position += 1 if y_position < MAX_Y_POSITION
@@ -27,6 +31,8 @@ class Robot
   end
 
   def rotate(direction)
+    return if orientation.nil?
+
     orientation_index = ORIENTATIONS.find_index(orientation)
 
     new_orientation_index = if direction == 'LEFT'
@@ -45,6 +51,16 @@ class Robot
   end
 
   def report
+    return if x_position.nil? || y_position.nil? || orientation.nil?
+
     "#{x_position}, #{y_position}, #{orientation}"
+  end
+
+  private
+
+  def valid_placement?(x_position, y_position, orientation)
+    x_position.to_s == x_position.to_i.to_s &&
+    y_position.to_s == y_position.to_i.to_s &&
+    ORIENTATIONS.include?(orientation)
   end
 end
