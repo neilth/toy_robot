@@ -102,4 +102,10 @@ RSpec.describe Robot do
       end
     end
   end
+
+  describe '#report' do
+    it 'returns the current position and direction of the robot' do
+      expect(robot.report).to eq("3, 3, NORTH")
+    end
+  end
 end

@@ -43,4 +43,8 @@ class Robot
 
     self.direction = DIRECTIONS[new_direction_index]
   end
+
+  def report
+    "#{x_position}, #{y_position}, #{direction}"
+  end
 end
