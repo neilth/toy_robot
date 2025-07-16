@@ -25,4 +25,22 @@ class Robot
       self.x_position -= 1 if x_position > 0
     end
   end
+
+  def rotate(orientation)
+    direction_index = DIRECTIONS.find_index(direction)
+
+    new_direction_index = if orientation == 'LEFT'
+                            direction_index - 1
+                          elsif orientation == 'RIGHT'
+                            direction_index + 1
+                          else
+                            direction_index
+                          end
+
+    new_direction_index = 0 if new_direction_index >= DIRECTIONS.length
+
+    new_direction_index = DIRECTIONS.length - 1 if new_direction_index < 0
+
+    self.direction = DIRECTIONS[new_direction_index]
+  end
 end
