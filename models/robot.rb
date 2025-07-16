@@ -12,4 +12,17 @@ class Robot
     @y_position = y_position
     @direction = direction
   end
+
+  def move
+    case direction
+    when 'NORTH'
+      self.y_position += 1 if y_position < MAX_Y_POSITION
+    when 'SOUTH'
+      self.y_position -= 1 if y_position > 0
+    when 'EAST'
+      self.x_position += 1 if x_position < MAX_X_POSITION
+    when 'WEST'
+      self.x_position -= 1 if x_position > 0
+    end
+  end
 end
