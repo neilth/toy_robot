@@ -53,6 +53,52 @@ EXIT
 - Exits the application
   - Alternatively, Ctrl + C can also be used to exit the application
 
+## Sample Input And Output
+```
+PLACE 0,0,NORTH
+REPORT
+Output: 0, 0, NORTH
+RIGHT
+MOVE 
+REPORT
+Output: 1, 0, EAST
+MOVE
+LEFT
+MOVE
+MOVE
+REPORT
+Output: 2, 2, NORTH
+```
+```
+PLACE 3,3,NORTH
+REPORT
+Output: 3, 3, NORTH
+PLACE 0,4,SOUTH
+REPORT
+Output: 0, 4, SOUTH
+PLACE -1,10,NORTH          
+REPORT
+Output: 0, 4, SOUTH
+```
+```
+PLACE 0,4,NORTH
+MOVE
+REPORT
+Output: 0, 4, NORTH
+RIGHT
+RIGHT
+MOVE
+REPORT
+Output: 0, 3, SOUTH
+```
+```
+MOVE
+MOVE
+MOVE
+REPORT
+# nothing to output
+```
+
 ## Versions Used
 - Ruby v3.4.4
 - RSpec v3.8.0
