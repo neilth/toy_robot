@@ -12,7 +12,7 @@ class RobotApp
       if input.include?('PLACE')
         values = input.split('PLACE')[1].split(',').map(&:strip)
 
-        robot.place(*values)
+        robot.place(*values) if values.length == 3
       elsif input == 'MOVE'
         robot.move
       elsif input == 'LEFT' || input == 'RIGHT'
