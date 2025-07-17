@@ -7,7 +7,7 @@ class RobotApp
     robot = Robot.new
 
     loop do
-      input = gets.chomp
+      input = gets.chomp.strip
 
       if input.include?('PLACE')
         values = input.split('PLACE')[1].split(',').map(&:strip)
@@ -27,5 +27,5 @@ class RobotApp
 end
 
 if __FILE__ == $0
-  App.new.run
+  RobotApp.new.run
 end
