@@ -10,7 +10,11 @@ class RobotApp
       input = gets.chomp.strip
 
       if input.include?('PLACE')
-        values = input.split('PLACE')[1].split(',').map(&:strip)
+        values = input.split('PLACE')[1]
+
+        next if values.nil?
+
+        values = values.split(',').map(&:strip)
 
         robot.place(*values) if values.length == 3
       elsif input == 'MOVE'
