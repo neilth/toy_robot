@@ -114,16 +114,35 @@ RSpec.describe Robot do
 
   describe '#rotate' do
     context 'when the rotation direction is RIGHT' do
-      before { robot.rotate('RIGHT') }
       it 'changes orientation to the right' do
+        robot.rotate('RIGHT')
         expect(robot.orientation).to eq('EAST')
+
+        robot.rotate('RIGHT')
+        expect(robot.orientation).to eq('SOUTH')
+
+        robot.rotate('RIGHT')
+        expect(robot.orientation).to eq('WEST')
+
+        robot.rotate('RIGHT')
+        expect(robot.orientation).to eq('NORTH')
+
       end
     end
 
     context 'when the rotation direction is LEFT' do
-      before { robot.rotate('LEFT') }
       it 'changes orientation to the left' do
+        robot.rotate('LEFT')
         expect(robot.orientation).to eq('WEST')
+
+        robot.rotate('LEFT')
+        expect(robot.orientation).to eq('SOUTH')
+
+        robot.rotate('LEFT')
+        expect(robot.orientation).to eq('EAST')
+
+        robot.rotate('LEFT')
+        expect(robot.orientation).to eq('NORTH')
       end
     end
 
