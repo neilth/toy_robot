@@ -28,7 +28,7 @@ RSpec.describe Robot do
     context 'when the y position value is invalid' do
       let (:invalid_y_position) { Robot::MAX_Y_POSITION + 1 }
 
-      it 'must not update the robot x position' do
+      it 'must not update the robot y position' do
         robot.place(x_position, invalid_y_position, orientation)
 
         expect(robot.y_position).to eq(y_position.to_i)
@@ -38,7 +38,7 @@ RSpec.describe Robot do
     context 'when the orientation value is invalid' do
       let (:invalid_orientation) { 'INVALID' }
 
-      it 'must not update the robot x position' do
+      it 'must not update the robot orientation' do
         robot.place(x_position, y_position, invalid_orientation)
 
         expect(robot.orientation).to eq(orientation)
